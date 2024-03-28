@@ -10,14 +10,9 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
-
+    name: Run tests
+    image: node:14
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Run unit tests
-      run: npm test
+      - checkout
+      - run: npm install
+      - run: npm test

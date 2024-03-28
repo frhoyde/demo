@@ -9,15 +9,41 @@ on:
       - main
 
 jobs:
-  test:
+  unit_test:
+    name: Run unit tests
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Run unit tests
-      run: npm test
+      - name: Run unit tests
+        run: npm test
+
+  integration_test:
+    name: Run integration tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run integration tests
+        run: npm run integration-test
+
+  regression_test:
+    name: Run regression tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run regression tests
+        run: npm run regression-test
